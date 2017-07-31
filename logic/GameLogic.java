@@ -124,7 +124,10 @@ public class GameLogic {
 
 		for (int i = 0; i < n; i++) {
 			int a = random.nextInt(9);
-			if (a == 1)
+			
+			if(a==0)
+				gameObjects.add(new Chip(random.nextInt(1980), random.nextInt(1020), 10, Color.magenta));
+			else if (a == 1)
 				gameObjects.add(new Chip(random.nextInt(1980), random.nextInt(1020), 10, Color.cyan));
 			else if (a == 2)
 				gameObjects.add(new Chip(random.nextInt(1980), random.nextInt(1020), 10, Color.orange));

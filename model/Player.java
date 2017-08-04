@@ -5,11 +5,26 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+/**
+ * @author MerveY
+ * @version 1.0	
+ * A generic player class that extends from Game Objects abstract class.
+ *
+ */
 public class Player extends GameObject {
 	
 	private int speed;
 	private BufferedImage image;
 	private String name;
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @param radius
+	 * @param color
+	 * @param speed
+	 * @param name
+	 */
 
 	public Player(int x, int y, int radius, Color color, int speed, String name) {
 		super(x, y, radius, color);
@@ -23,6 +38,11 @@ public class Player extends GameObject {
 		
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Player objects's shape property
+	 * 
+	 */
 	
 	public void draw(Graphics2D g2d) {
 		// TODO Auto-generated method stub
@@ -45,6 +65,12 @@ public class Player extends GameObject {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	
+	/**
+	 *  Sets param between 5-250
+	 *  @param radius
+	 * 
+	 */
 	
 	@Override
 	public void setRadius(int radius) {

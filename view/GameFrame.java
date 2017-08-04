@@ -2,6 +2,13 @@ package tr.org.linux.kamp.Agario.view;
 
 import javax.swing.JFrame;
 
+/**
+ * 
+ * @author MerveY
+ * @version 1.0
+ * A JFrame class that provide create a frame for game board
+ */
+
 public class GameFrame extends JFrame {
 	
 	public GameFrame() {

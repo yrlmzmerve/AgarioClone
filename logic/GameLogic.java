@@ -20,14 +20,20 @@ import tr.org.linux.kamp.Agario.view.GamePanel;
 
 //intersects
 //contains
+/**
+ * @author MerveY
+ * @version 1.0
+ * 
+ * all motion software of Agario
+ * Code part
+ */
 
 public class GameLogic {
 
 	private boolean isGameRunning;
-
 	private int xTarget;
 	private int yTarget;
-
+	
 	private Player player;
 	private Enemy enemy;
 	private ArrayList<GameObject> gameObjects;
@@ -38,6 +44,13 @@ public class GameLogic {
 	private GameFrame gameFrame;
 	private GamePanel gamePanel;
 	private Random random;
+	
+	/**
+	 * 
+	 * @param playerName
+	 * @param selectedColor
+	 * @param difficulty
+	 */
 
 	public GameLogic(String playerName, Color selectedColor, Difficulty difficulty) {
 
@@ -55,7 +68,12 @@ public class GameLogic {
 
 		gameFrame = new GameFrame();
 		gamePanel = new GamePanel(gameObjects);
-
+		
+		
+		/**
+		 * According to select difficulty level determine number of chips, mine and enemy.
+		 */
+		
 		switch (difficulty) {
 		case EASY:
 
@@ -84,6 +102,12 @@ public class GameLogic {
 		addMouseEvents();
 
 	}
+	
+	/**
+	 * Create enemy 
+	 * @param number // determine #of
+	 * 
+	 */
 
 	private void fillEnemies(int number) {
 		// TODO Auto-generated method stub
@@ -102,6 +126,11 @@ public class GameLogic {
 
 		}
 	}
+	
+	/**
+	 * Create mine 
+	 * @param number // determine #of
+	 */
 
 	private void fillMine(int number) {
 		for (int i = 0; i < number; i++) {
@@ -119,6 +148,12 @@ public class GameLogic {
 
 		}
 	}
+	
+	/**
+	 * Create chips 
+	 * @param number // determine #of
+	 * With random values colorful chips
+	 */
 
 	private void fillChips(int n) {
 
@@ -154,6 +189,13 @@ public class GameLogic {
 		 */
 
 	}
+	
+	/**
+	 * Control to collisions between player-enemy-chip and mine
+	 * 
+	 * 
+	 * 
+	 */
 
 	private synchronized void checkCollisions() {
 
@@ -165,6 +207,9 @@ public class GameLogic {
 			if (player.getRectangle().intersects(gameObject2.getRectangle())) {
 				// if (player.getRectangle().contains(gameObject2.getRectangle())) {
 
+				/**
+				 * if object chip;
+				 */
 				if (gameObject2 instanceof Chip) { // hangisi diye karısmasın dıye. ->chip ->mine ->player ->enemy
 
 					player.setRadius(player.getRadius() + gameObject2.getRadius() / 3);
@@ -181,7 +226,11 @@ public class GameLogic {
 
 					}
 
-				} else if (gameObject2 instanceof Enemy) {
+				} 
+				
+				
+				 else if (gameObject2 instanceof Enemy) {
+				 
 					if (player.getRadius() > gameObject2.getRadius()) {
 						player.setRadius((int) player.getRadius() + gameObject2.getRadius());
 						enemiesToRemove.add(gameObject2);
@@ -196,6 +245,8 @@ public class GameLogic {
 				}
 
 			}
+			
+			
 
 			if (gameObject2 instanceof Enemy) {
 
@@ -223,12 +274,22 @@ public class GameLogic {
 			}
 
 		}
+		
+		/**
+		 * garbage list
+		 */
 		// loop is completed remove objects from the list
 		gameObjects.removeAll(chipsToRemove);
 		gameObjects.removeAll(minesToRemove);
 		gameObjects.removeAll(enemiesToRemove);
 
 	}
+	
+	/**
+	 * between player and enemy direction commands
+	 * enemy run or pursue
+	 * 
+	 */
 
 	private synchronized void moveEnemies() {
 
@@ -317,6 +378,10 @@ public class GameLogic {
 		return false;
 
 	}
+	
+	/**
+	 * add new objects on game board
+	 */
 
 	private synchronized void addNewObjects() {
 

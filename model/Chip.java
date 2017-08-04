@@ -1,6 +1,12 @@
 package tr.org.linux.kamp.Agario.model;
 
 import java.awt.Color;
+/**
+ * @author MerveY
+ * @version 1.0
+ *  A generic chip class that extends from Game Objects abstract class.
+ *
+ */
 
 public class Chip extends GameObject {
 
